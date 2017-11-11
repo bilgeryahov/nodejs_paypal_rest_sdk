@@ -1,0 +1,25 @@
+{
+  "name": "nodejs_paypal_rest_sdk",
+  "version": "1.0.0",
+  "description": "Introduction to PayPal NodeJS REST SDK.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bilgeryahov/nodejs_paypal_rest_sdk.git"
+  },
+  "keywords": [
+    "PayPal",
+    "Node",
+    "JS",
+    "REST"
+  ],
+  "author": "Bilger Yahov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bilgeryahov/nodejs_paypal_rest_sdk/issues"
+  },
+  "homepage": "https://github.com/bilgeryahov/nodejs_paypal_rest_sdk#readme"
+}
