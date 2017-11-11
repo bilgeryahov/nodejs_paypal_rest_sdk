@@ -52,11 +52,43 @@ app.post('/pay', (req, res) => {
 			throw error;
 		}
 		else{
-			console.log("Create Payment Response");
-			console.log(payment);
-			res.send('test');
+			for(let i = 0; i < payment.links.length; i++){
+				if(payment.links[i].rel === 'approval_url'){
+					res.redirect(payment.links[i].href);
+				}
+			}
 		}
 	});
+});
+
+app.get('/success', (req, res) => {
+	const payerID = req.query.PayerID;
+	const paymentId = req.query.paymentId;
+
+	const execute_payment_json = {
+		"payer_id": payerID,
+		"transactions": [{
+			"amount": {
+				"currency": "EUR",
+				"total": "2.00"
+			}
+		}]
+	};
+
+	paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+		if (error) {
+			console.log(error.response);
+			throw error;
+		}
+		else {
+			console.log(JSON.stringify(payment));
+			res.send('Success');
+		}
+	});
+});
+
+app.get('/cancel', (req, res) => {
+	res.send('Cancelled');
 });
 
 app.listen(3000, () => {
